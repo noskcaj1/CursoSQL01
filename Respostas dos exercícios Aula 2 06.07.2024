@@ -1,0 +1,115 @@
+EXERCÍCIOS DA PÁGINA 70 DA APOSTILA:
+
+Laboratório 1
+A – Criando um banco de dados
+1. Acesse o SSMS e realize a conexão;
+2. Selecione o botão New Query;
+3. Crie um banco de nome DB_SALA;
+4. Coloque em uso o banco DB_SALA;
+5. Por meio de funções, procedures, views ou tabelas, retorne as informações adiante:
+•• Nome do banco;
+•• Lista dos arquivos do banco de dados;
+•• Lista dos objetos do banco de dados;
+•• Lista dos logins.
+6. Realize o mesmo procedimento utilizando o Object Explorer do SSMS.
+
+-- RESPOSTA LAB1 (VIA COMANDOS SQL)
+
+--Criando o Banco de Dados
+CREATE DATABASE DB_SALA;
+
+--Colocndo em Usos
+USE DB_SALAS;
+GO
+
+--Nome do Banco
+SELECT DB_NAME() AS NomeDoBanco;
+
+--Arquivos do Banco de Dados
+EXEC SP_HELPFILE;
+
+--Lista dos objetos do banco de dados
+SELECT * FROM sys.objects;
+
+--Lista dos logins
+SELECT name 
+FROM sys.server_principals 
+WHERE type_desc = 'SQL_LOGIN';
+
+
+--------------------------------------------------
+Laboratório 2
+A – Criando outro banco de dados
+1. Acesse o SSMS e realize a conexão;
+2. No Object Explorer do SSMS, sob Databases, selecione com o botão direito New
+Database. A tela de criação de banco de dados será apresentada;
+3. No campo Database Name informe o nome do banco: DB_SALA1;
+4. Selecione OK;
+5. Verifique no Object Explorer do SSMS se foi criado o banco de dados;
+6. Por meio de funções, procedures, views ou tabelas, retorne as informações adiante:
+•• Nome do banco;
+•• Lista dos arquivos do banco de dados;
+•• Lista dos objetos do banco de dados;
+•• Lista dos logins.
+7. Realize o mesmo procedimento utilizando o Object Explorer do SSMS.
+
+-- RESPOSTA LAB2 (VIA COMANDOS SQL)
+
+--Criando o Banco de Dados
+CREATE DATABASE DB_SALA1;
+
+--Colocndo em Usos
+USE DB_SALA1;
+GO
+
+--Nome do Banco
+SELECT DB_NAME() AS NomeDoBanco;
+
+--Arquivos do Banco de Dados
+EXEC SP_HELPFILE;
+
+--Lista dos objetos do banco de dados
+SELECT * FROM sys.objects;
+
+--Lista dos logins
+SELECT name 
+FROM sys.server_principals 
+WHERE type_desc = 'SQL_LOGIN';
+
+-------------------------------------------------
+Laboratório 3
+A – Utilizando os objetos de catálogo
+1. Coloque o banco db_Ecommerce em uso;
+2. Por meio de funções, procedures, views ou tabelas, retorne as informações a seguir:
+•• Liste as tabelas de usuário do banco de dados;
+•• Liste os campos da tabela TB_CLIENTE;
+•• Apresente os objetos do tipo = ‘V’;
+•• Verifique a estrutura da tabela TB_Pedido.
+
+--RESPOSTAS LAB3 (VIA COMANDOS SQL NO BANCO DO SERVIDOR DA IMPACTA - db_Ecommerce)
+
+--Colocar o banco db_Ecommerce em uso:
+
+USE db_Ecommerce;
+GO
+
+--Listar as tabelas de usuário do banco de dados:
+
+SELECT TABLE_NAME 
+FROM INFORMATION_SCHEMA.TABLES 
+WHERE TABLE_TYPE = 'BASE TABLE';
+
+--Listar os campos da tabela TB_CLIENTE:
+
+SELECT COLUMN_NAME 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'TB_CLIENTE';
+
+--Apresentar os objetos do tipo 'V' (views):
+
+SELECT TABLE_NAME 
+FROM INFORMATION_SCHEMA.VIEWS;
+
+--Verificar a estrutura da tabela TB_Pedido:
+
+EXEC sp_help 'TB_Pedido';
