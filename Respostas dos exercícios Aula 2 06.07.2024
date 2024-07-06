@@ -19,7 +19,7 @@ A – Criando um banco de dados
 CREATE DATABASE DB_SALA;
 
 --Colocndo em Usos
-USE DB_SALAS;
+USE DB_SALA;
 GO
 
 --Nome do Banco
